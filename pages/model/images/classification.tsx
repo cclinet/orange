@@ -1,6 +1,6 @@
 import ImageCanvas from "../../../components/ImageCanvas";
 import download from "../../../utils/download";
-import {db} from "../../../utils/db";
+import { db } from "../../../utils/db";
 
 export default function Classification() {
   return (
@@ -9,7 +9,7 @@ export default function Classification() {
 
       <button onClick={handleClick}>Download</button>
 
-      <ImageCanvas width={240} height={240}/>
+      <ImageCanvas width={240} height={240} />
       <div id="result" className="mt-3"></div>
     </main>
   );

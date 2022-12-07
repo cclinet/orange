@@ -1,16 +1,20 @@
 import * as ort from "onnxruntime-web";
 import _ from "lodash";
-import {imagenetClasses} from "../data/imagenet";
-import {db} from "./db";
+import { imagenetClasses } from "../data/imagenet";
+import { db } from "./db";
 
 export async function runSqueezenetModel(
   preprocessedData: any
 ): Promise<[any, number]> {
   // Create session and set options. See the docs here for more options:
   //https://onnxruntime.ai/docs/api/js/interfaces/InferenceSession.SessionOptions.html#graphOptimizationLevel
-  const data: ArrayBuffer | undefined = await db.models.where('name').equals('squeezenet1_1').last().then(r => r?.model)
+  const data: ArrayBuffer | undefined = await db.models
+    .where("name")
+    .equals("squeezenet1_1")
+    .last()
+    .then((r) => r?.model);
   if (!data) {
-    throw 'Parameter is not a number!';
+    throw "Parameter is not a number!";
   }
 
   const model: ArrayBuffer = data!;
@@ -22,7 +26,10 @@ export async function runSqueezenetModel(
 
   console.log("Inference session created");
   // Run inference and get results.
-  const [results, inferenceTime] = await runInference(session, preprocessedData);
+  const [results, inferenceTime] = await runInference(
+    session,
+    preprocessedData
+  );
   return [results, inferenceTime];
 }
 
