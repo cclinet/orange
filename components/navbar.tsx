@@ -5,7 +5,7 @@ import { useState } from "react";
 
 export default function NavBar({ children }: any) {
   const [menuVisible, setMenuVisible] = useState(false);
-  const paths: string[] = ['model', "posts"]
+  const paths: string[] = ["model", "posts"];
 
   return (
     <>
