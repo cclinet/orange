@@ -14,7 +14,7 @@ export async function runSqueezenetModel(
     .last()
     .then((r) => r?.model);
   if (!data) {
-    throw "Parameter is not a number!";
+    alert("load model error!");
   }
 
   const model: ArrayBuffer = data!;
