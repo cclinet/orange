@@ -13,7 +13,7 @@ const ImageCanvas = (props: Props) => {
   const [topResultLabel, setLabel] = useState("");
   const [topResultConfidence, setConfidence] = useState("");
   const [inferenceTime, setInferenceTime] = useState("");
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedImage, setSelectedImage] = useState<File|null>(null);
   // Load the image from the IMAGE_URLS array
   const getImage = () => {
     const sampleImageUrls: Array<{ text: string; value: string }> = IMAGE_URLS;
@@ -78,8 +78,11 @@ const ImageCanvas = (props: Props) => {
               <p className="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
             </div>
             <input id="dropzone-file" type="file" className="hidden" onChange={event => {
-              console.log(event.target.files[0]);
-              setSelectedImage(event.target.files[0]);}
+              if (event.target.files) {
+                console.log(event.target.files[0]);
+                setSelectedImage(event.target.files[0]);
+              }
+            }
             }/>
           </label>
         </div>
