@@ -1,21 +1,32 @@
 import { Post, getAllPostIds, getPostData } from "../../utils/posts";
-
-export default function PostPage({ postData }:{postData: Post}) {
-
+import Head from "next/head";
+import Script from "next/script";
+export default function PostPage({ postData }: { postData: any }) {
   return (
     <>
+      <Head>
+        <title>{postData.title}</title>
+      </Head>
+
       {postData.title}
       <br />
       {postData.id}
       <br />
-      {postData.timestamp}
+      <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+      {/*TODO:修改window类型 */}
+      <Script
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"
+        onReady={() => {
+          (window as any).MathJax.typeset();
+        }}
+      />
     </>
   );
 }
 
-export async function getStaticProps({ params }: {params: any }) {
+export async function getStaticProps({ params }: { params: any }) {
   // Call an external API endpoint to get posts
-  const postData = getPostData(params.id);
+  const postData = await getPostData(params.id);
   // By returning { props: { posts } }, the Blog component
   // will receive `posts` as a prop at build time
 
