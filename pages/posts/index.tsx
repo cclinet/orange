@@ -1,4 +1,5 @@
-import { getSortedPostsData } from '../../utils/posts';
+import { getSortedPostsData, Post } from "../../utils/posts";
+import Link from "next/link";
 export async function getStaticProps() {
   const allPostsData = getSortedPostsData();
   return {
@@ -8,22 +9,22 @@ export async function getStaticProps() {
   };
 }
 
-export default function Home({ allPostsData }) {
+export default function Home({ allPostsData }: { allPostsData: Post[] }) {
   return (
     <div>
       {/* Keep the existing code here */}
 
       {/* Add this <section> tag below the existing <section> tag */}
-      <section >
+      <section>
         <h2> Blog</h2>
         <ul>
-          {allPostsData.map(({ id, date, title }, index) => (
+          {allPostsData.map(({ id, timestamp, title }, index) => (
             <li key={index}>
-              {title}
-              <br />
-              {id}
-              <br />
-              {date}
+              <Link href={`/posts/${id}`}>
+                {title}
+                {id}
+                {timestamp}
+              </Link>
             </li>
           ))}
         </ul>

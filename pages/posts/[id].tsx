@@ -1,35 +1,27 @@
-import { useRouter } from "next/router";
+import { Post, getAllPostIds, getPostData } from "../../utils/posts";
 
-type PostType = {
-  title: String;
-};
-
-export default function Post(props: { posts: PostType[] }) {
-  const router = useRouter();
-  console.log(props);
-  props.posts?.map((post, i) => {
-    console.log(post);
-  });
+export default function PostPage({ postData }:{postData: Post}) {
 
   return (
-    <div>abc</div>
-    // <ul>
-    //     {posts.map((post, i) => (
-    //         <li key={i}>{post.title}</li>
-    //     ))}
-    // </ul>
+    <>
+      {postData.title}
+      <br />
+      {postData.id}
+      <br />
+      {postData.timestamp}
+    </>
   );
 }
 
-export async function getStaticProps(params: any) {
+export async function getStaticProps({ params }: {params: any }) {
   // Call an external API endpoint to get posts
-  const posts: PostType[] = [{ title: "S" }, { title: "abc" }];
-
+  const postData = getPostData(params.id);
   // By returning { props: { posts } }, the Blog component
   // will receive `posts` as a prop at build time
+
   return {
     props: {
-      posts,
+      postData,
     },
   };
 }
@@ -37,14 +29,14 @@ export async function getStaticProps(params: any) {
 // This function gets called at build time
 export async function getStaticPaths() {
   // Call an external API endpoint to get posts
-  const posts: PostType[] = [{ title: "abc" }];
-
-  // Get the paths we want to pre-render based on posts
-  const paths = posts.map((post) => ({
-    params: { id: "1" },
-  }));
-
+  // const posts: PostType[] = [{ title: "abc" }];
+  //
+  // // Get the paths we want to pre-render based on posts
+  // const paths = posts.map((post) => ({
+  //   params: { id: "1" },
+  // }));
+  const paths = getAllPostIds();
   // We'll pre-render only these paths at build time.
   // { fallback: false } means other routes should 404.
-  return { paths, fallback: true };
+  return { paths, fallback: false };
 }

@@ -40,14 +40,16 @@ export default function NavBar({ children }: any) {
           <div className="flex flex-1 items-center justify-end md:justify-between">
             <nav aria-label="Site Nav" className="hidden md:block">
               <ul className="flex items-center gap-6 text-sm">
-                <li>
-                  <Link
-                    className="text-gray-500 transition hover:text-gray-500/75"
-                    href="/model"
-                  >
-                    model
-                  </Link>
-                </li>
+                {paths.map((path, index) => (
+                  <li key={index}>
+                    <Link
+                      className="text-gray-500 transition hover:text-gray-500/75"
+                      href={`/${path}`}
+                    >
+                      {path}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </nav>
 
