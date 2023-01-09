@@ -1,6 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
+  "@tailwindcss/typography": ^0.5.8
   "@types/lodash": ^4.14.191
   "@types/node": 18.11.18
   "@types/react": 18.0.26
@@ -41,6 +42,7 @@ dependencies:
   react-dom: registry.npmmirror.com/react-dom/18.2.0_react@18.2.0
 
 devDependencies:
+  "@tailwindcss/typography": registry.npmmirror.com/@tailwindcss/typography/0.5.8_tailwindcss@3.2.4
   "@types/lodash": registry.npmmirror.com/@types/lodash/4.14.191
   "@types/node": registry.npmmirror.com/@types/node/18.11.18
   "@types/react": registry.npmmirror.com/@types/react/18.0.26
@@ -1288,6 +1290,26 @@ packages:
     dependencies:
       tslib: registry.npmmirror.com/tslib/2.4.1
     dev: false
+
+  registry.npmmirror.com/@tailwindcss/typography/0.5.8_tailwindcss@3.2.4:
+    resolution:
+      {
+        integrity: sha512-xGQEp8KXN8Sd8m6R4xYmwxghmswrd0cPnNI2Lc6fmrC3OojysTBJJGSIVwPV56q4t6THFUK3HJ0EaWwpglSxWw==,
+        registry: https://registry.npm.taobao.org/,
+        tarball: https://registry.npmmirror.com/@tailwindcss/typography/-/typography-0.5.8.tgz,
+      }
+    id: registry.npmmirror.com/@tailwindcss/typography/0.5.8
+    name: "@tailwindcss/typography"
+    version: 0.5.8
+    peerDependencies:
+      tailwindcss: ">=3.0.0 || insiders"
+    dependencies:
+      lodash.castarray: registry.npmmirror.com/lodash.castarray/4.4.0
+      lodash.isplainobject: registry.npmmirror.com/lodash.isplainobject/4.0.6
+      lodash.merge: registry.npmmirror.com/lodash.merge/4.6.2
+      postcss-selector-parser: registry.npmmirror.com/postcss-selector-parser/6.0.10
+      tailwindcss: registry.npmmirror.com/tailwindcss/3.2.4_postcss@8.4.20
+    dev: true
 
   registry.npmmirror.com/@tootallnate/once/2.0.0:
     resolution:
@@ -5330,6 +5352,28 @@ packages:
     engines: { node: ">=10" }
     dependencies:
       p-locate: registry.npmmirror.com/p-locate/5.0.0
+    dev: true
+
+  registry.npmmirror.com/lodash.castarray/4.4.0:
+    resolution:
+      {
+        integrity: sha512-aVx8ztPv7/2ULbArGJ2Y42bG1mEQ5mGjpdvrbJcJFU3TbYybe+QlLS4pst9zV52ymy2in1KpFPiZnAOATxD4+Q==,
+        registry: https://registry.npm.taobao.org/,
+        tarball: https://registry.npmmirror.com/lodash.castarray/-/lodash.castarray-4.4.0.tgz,
+      }
+    name: lodash.castarray
+    version: 4.4.0
+    dev: true
+
+  registry.npmmirror.com/lodash.isplainobject/4.0.6:
+    resolution:
+      {
+        integrity: sha512-oSXzaWypCMHkPC3NvBEaPHf0KsA5mvPrOPgQWDsbg8n7orZ290M0BmC/jgRZ4vcJ6DTAhjrsSYgdsW/F+MFOBA==,
+        registry: https://registry.npm.taobao.org/,
+        tarball: https://registry.npmmirror.com/lodash.isplainobject/-/lodash.isplainobject-4.0.6.tgz,
+      }
+    name: lodash.isplainobject
+    version: 4.0.6
     dev: true
 
   registry.npmmirror.com/lodash.merge/4.6.2:

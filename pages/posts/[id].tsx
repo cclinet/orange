@@ -12,7 +12,10 @@ export default function PostPage({ postData }: { postData: any }) {
       <br />
       {postData.id}
       <br />
-      <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+      <article
+        className={"dark:bg-black prose lg:prose-stone dark:prose-invert"}
+        dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
+      />
       {/*TODO:修改window类型 */}
       <Script
         src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"

@@ -2,27 +2,46 @@ import Link from "next/link";
 import Image from "next/image";
 import Head from "next/head";
 import { useState } from "react";
-
+import { useEffect } from "react";
+import ThemeSwitch from "./themeSwitch";
 const paths: string[] = ["model", "posts"];
-
-function NavMenuList() {
-  return (<>
-    {paths.map((path, index) => (
-      <li key={index}>
-        <Link
-          className="text-gray-500 transition hover:text-gray-500/75"
-          href={`/${path}`}
-        >
-          {path}
-        </Link>
-      </li>
-    ))}
-  </>)
+export enum Theme {
+  Light = "Light",
+  Dark = "Dark",
+  System = "System",
 }
-export default function NavBar({ children }: any) {
+function NavMenuList() {
+  return (
+    <>
+      {paths.map((path, index) => (
+        <li key={index}>
+          <Link
+            className="text-gray-500 transition hover:text-gray-500/75"
+            href={`/${path}`}
+          >
+            {path}
+          </Link>
+        </li>
+      ))}
+    </>
+  );
+}
+export default function Layout({ children }: any) {
   const [menuVisible, setMenuVisible] = useState(false);
-
-
+  const [theme, setTheme] = useState(Theme.System);
+  const [themeString, setThemeString] = useState("");
+  useEffect(() => {
+    // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+    if (
+      localStorage.theme === "Dark" ||
+      (!("theme" in localStorage) &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches)
+    ) {
+      setThemeString(" dark ");
+    } else {
+      setThemeString(" ");
+    }
+  }, [theme]);
   return (
     <>
       <Head>
@@ -31,7 +50,7 @@ export default function NavBar({ children }: any) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <header aria-label="Site Header" className="bg-white">
+      <header aria-label="Site Header" className={`${themeString} bg-white`}>
         <div className="mx-auto flex h-16 max-w-screen-xl items-center gap-8 px-4 sm:px-6 lg:px-8">
           <Link className="block text-teal-600" href="/">
             <span className="sr-only">Home</span>
@@ -57,7 +76,7 @@ export default function NavBar({ children }: any) {
           <div className="flex flex-1 items-center justify-end md:justify-between">
             <nav aria-label="Site Nav" className="hidden md:block">
               <ul className="flex items-center gap-6 text-sm">
-                <NavMenuList/>
+                <NavMenuList />
               </ul>
             </nav>
 
@@ -70,12 +89,7 @@ export default function NavBar({ children }: any) {
                 {/*  Login*/}
                 {/*</Link>*/}
 
-                <Link
-                  className="hidden rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-teal-600 transition hover:text-teal-600/75 sm:block"
-                  href="/"
-                >
-                  Register
-                </Link>
+                <ThemeSwitch setTheme={setTheme}></ThemeSwitch>
               </div>
 
               <button
@@ -104,7 +118,7 @@ export default function NavBar({ children }: any) {
                   role="menu"
                 >
                   <ul>
-                  <NavMenuList/>
+                    <NavMenuList />
                   </ul>
                 </div>
               </button>
@@ -112,7 +126,9 @@ export default function NavBar({ children }: any) {
           </div>
         </div>
       </header>
-      <div className="mx-auto h-16 max-w-screen-xl items-center gap-8 px-4 sm:px-6 lg:px-8">
+      <div
+        className={`${themeString} mx-auto h-16 max-w-screen-xl items-center gap-8 px-4 sm:px-6 lg:px-8`}
+      >
         {children}
       </div>
     </>
