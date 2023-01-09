@@ -35,7 +35,7 @@ export default function Header({ setTheme }: { setTheme: Function }) {
 
           <div className="flex items-center gap-4">
             <div className="sm:flex sm:gap-4">
-              <ThemeSwitch setTheme={setTheme}></ThemeSwitch>
+              {/*<ThemeSwitch setTheme={setTheme}></ThemeSwitch>*/}
             </div>
 
             <button
