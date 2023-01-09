@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { useEffect } from "react";
-import { Theme } from "./Layout";
+import { Theme } from "./Header";
 
 export default function ThemeSwitch({ setTheme }: { setTheme: Function }) {
   let themes = [Theme.Light, Theme.Dark, Theme.System];
@@ -47,7 +46,7 @@ export default function ThemeSwitch({ setTheme }: { setTheme: Function }) {
           whitespace-nowrap
         "
             type="button"
-            id="dropdownMenuButton1"
+            id="themeSwitch"
             data-bs-toggle="dropdown"
             aria-expanded="false"
             onClick={() => setMenuVisible(!menuVisible)}
@@ -88,7 +87,7 @@ export default function ThemeSwitch({ setTheme }: { setTheme: Function }) {
           m-0
           bg-clip-padding
           border-none`}
-            aria-labelledby="dropdownMenuButton1"
+            aria-labelledby="themeSwitch"
           >
             {themes.map((theme, index) => (
               <li key={index} onClick={() => persistenceTheme(theme)}>
