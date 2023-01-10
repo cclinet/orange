@@ -2,6 +2,7 @@ import Head from "next/head";
 import { useState } from "react";
 import { useEffect } from "react";
 import Header, { Theme } from "./Header";
+import FooterNav from "./FooterNav";
 export default function Layout({ children }: any) {
   const [theme, setTheme] = useState(Theme.System);
   const [themeString, setThemeString] = useState("");
@@ -26,6 +27,7 @@ export default function Layout({ children }: any) {
       <div className={`mx-auto flex flex-col ${themeString} max-w-xl `}>
         <Header setTheme={setTheme} />
         <main className={`mt-32 px-4 sm:px-6 lg:px-8`}>{children}</main>
+        <FooterNav/>
       </div>
     </>
   );
