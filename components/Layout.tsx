@@ -25,7 +25,7 @@ export default function Layout({ children }: any) {
         <meta name="description" content="orange" />
       </Head>
       <div className={`mx-auto flex flex-col ${themeString} max-w-xl `}>
-        <Header setTheme={setTheme} />
+        <Header theme={theme} setTheme={setTheme} />
         <main className={`mt-32 px-4 sm:px-6 lg:px-8`}>{children}</main>
         <FooterNav />
       </div>

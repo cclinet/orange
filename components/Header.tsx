@@ -1,5 +1,5 @@
 import Link from "next/link";
-import ThemeSwitch from "./themeSwitch";
+import ThemeButton from "./themeButton";
 
 const paths: { name: string; link: string }[] = [
   { name: "home", link: "/" },
@@ -12,7 +12,13 @@ export enum Theme {
   System = "System",
 }
 
-export default function Header({ setTheme }: { setTheme: Function }) {
+export default function Header({
+  theme,
+  setTheme,
+}: {
+  theme: Theme;
+  setTheme: Function;
+}) {
   return (
     <header
       aria-label="Site Header"
@@ -28,7 +34,7 @@ export default function Header({ setTheme }: { setTheme: Function }) {
 
       <div className="flex items-center gap-4">
         <div className="sm:flex sm:gap-4">
-          {/*<ThemeSwitch setTheme={setTheme}></ThemeSwitch>*/}
+          <ThemeButton theme={theme} setTheme={setTheme}></ThemeButton>
         </div>
         {/*</div>*/}
       </div>
