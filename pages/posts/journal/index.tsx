@@ -16,14 +16,12 @@ export default function Home({ allPostsData }: { allPostsData: Post[] }) {
 
       {/* Add this <section> tag below the existing <section> tag */}
       <section>
-        <h2> Blog</h2>
         <ul>
           {allPostsData.map(({ id, timestamp, title }, index) => (
             <li key={index}>
               <Link href={`/posts/journal/${id}`}>
-                {title}
-                {id}
-                {timestamp}
+                <span>{title}</span>
+                <span>{timestamp}</span>
               </Link>
             </li>
           ))}

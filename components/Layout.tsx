@@ -20,7 +20,7 @@ export default function Layout({ children }: any) {
   return (
     <>
       <Head>
-        <title>Orange-the AI distribution center</title>
+        <title>Orange</title>
         <meta name="description" content="orange" />
       </Head>
       <div className={`mx-auto flex flex-col ${themeString} max-w-xl `}>
