@@ -1,4 +1,4 @@
-import { Post, getAllPostIds, getPostData } from "../../utils/posts";
+import { Post, getPostIds, getPostData } from "../../utils/posts";
 import Head from "next/head";
 import Script from "next/script";
 export default function PostPage({ postData }: { postData: any }) {
@@ -49,7 +49,8 @@ export async function getStaticPaths() {
   // const paths = posts.map((post) => ({
   //   params: { id: "1" },
   // }));
-  const paths = getAllPostIds();
+  const paths = getPostIds();
+  console.log(paths.map((x) => x.params.id));
   // We'll pre-render only these paths at build time.
   // { fallback: false } means other routes should 404.
   return { paths, fallback: false };

@@ -1,7 +1,7 @@
-import { getSortedPostsData, Post } from "../../utils/posts";
+import { getSortedPostsData, Post } from "../../../utils/posts";
 import Link from "next/link";
 export async function getStaticProps() {
-  const allPostsData = getSortedPostsData("/");
+  const allPostsData = getSortedPostsData("/journal");
   return {
     props: {
       allPostsData,
@@ -20,7 +20,7 @@ export default function Home({ allPostsData }: { allPostsData: Post[] }) {
         <ul>
           {allPostsData.map(({ id, timestamp, title }, index) => (
             <li key={index}>
-              <Link href={`/posts/${id}`}>
+              <Link href={`/posts/journal/${id}`}>
                 {title}
                 {id}
                 {timestamp}
