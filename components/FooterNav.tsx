@@ -4,5 +4,5 @@ export default function FooterNav() {
       <span>←</span>
       <span>→</span>
     </div>
-  )
+  );
 }
