@@ -3,8 +3,9 @@ import ThemeButton from "./themeButton";
 
 const paths: { name: string; link: string }[] = [
   { name: "home", link: "/" },
-  { name: "posts", link: "posts" },
-  { name: "model", link: "model" },
+  { name: "posts", link: "/posts" },
+  { name: "journal", link: "/posts/journal" },
+  { name: "model", link: "/model" },
 ];
 export enum Theme {
   Light = "Light",
@@ -49,7 +50,7 @@ function NavMenuList() {
         <li key={index}>
           <Link
             className="text-gray-600 transition hover:text-gray-500/75"
-            href={`/${path.link}`}
+            href={`${path.link}`}
           >
             {path.name}
           </Link>

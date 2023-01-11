@@ -27,6 +27,6 @@ function handleClick() {
       name: "squeezenet1_1",
       model: model,
     });
-    console.log("download finished");
+    // console.log("download finished");
   })();
 }

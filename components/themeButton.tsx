@@ -1,4 +1,5 @@
 import { Theme } from "./Header";
+import { useEffect } from "react";
 
 export default function ThemeButton({
   theme,
@@ -7,12 +8,6 @@ export default function ThemeButton({
   theme: Theme;
   setTheme: Function;
 }) {
-  const themes = [
-    { mode: Theme.Light },
-    { mode: Theme.Dark },
-    { mode: Theme.System },
-  ];
-
   function toggleTheme() {
     if (theme === Theme.System) {
       localStorage.theme = Theme.Light;
@@ -25,12 +20,20 @@ export default function ThemeButton({
       setTheme(Theme.System);
     }
   }
+  useEffect(() => {
+    // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+    if (localStorage.theme === Theme.Light) {
+      setTheme(Theme.Light);
+    } else if (localStorage.theme === Theme.Dark) {
+      setTheme(Theme.Dark);
+    } else {
+      setTheme(Theme.System);
+    }
+  }, []);
 
   function showIcon() {
     if (theme === Theme.System) {
-      return (
-        's'
-      );
+      return "s";
     } else if (theme === Theme.Light) {
       return "l";
     } else {
