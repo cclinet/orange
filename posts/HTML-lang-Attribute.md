@@ -8,18 +8,19 @@ date: "2023-01-11"
 ```html
 <!DOCTYPE html>
 <html lang="en-US">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width" />
-  <title>My test page</title>
-</head>
-<body>
-<img src="images/firefox-icon.png" alt="My test image" />
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>My test page</title>
+  </head>
+  <body>
+    <img src="images/firefox-icon.png" alt="My test image" />
+  </body>
 </html>
 ```
 
-一个基础的html页面如上所示。抛开其他不谈，我们来研究一下lang 到底应该怎么写。
+一个基础的 html 页面如上所示。抛开其他不谈，我们来研究一下 lang 到底应该怎么写。
+
 ## lang 属性
 
 https://r12a.github.io/app-subtags/
