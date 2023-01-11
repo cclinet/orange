@@ -10,7 +10,13 @@ function TimestampToString(timestamp: number) {
     .toString()
     .padStart(2, "0")}`;
 }
-export default function Index({ allPostsData, root }: { allPostsData: Post[], root:string }) {
+export default function Index({
+  allPostsData,
+  root,
+}: {
+  allPostsData: Post[];
+  root: string;
+}) {
   return (
     <div>
       <ul className={`flex flex-col gap-y-10`}>
@@ -20,9 +26,7 @@ export default function Index({ allPostsData, root }: { allPostsData: Post[], ro
               href={`/posts${root}/${id}`}
               className={`flex flex-row justify-between text-black  hover:text-gray-700`}
             >
-              <span className={`text-lg`}>
-                {title}
-              </span>
+              <span className={`text-lg`}>{title}</span>
               <hr
                 className={`grow self-end border-dotted mb-2 mx-2 border-slate-800 hover:border-slate-500`}
               />
