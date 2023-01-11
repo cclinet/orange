@@ -5,8 +5,10 @@ export default function Layout({ children, theme, setTheme }: any) {
   return (
     <>
       <Head>
-        <title>Orange</title>
+        <title key="title">Orange</title>
         <meta name="description" content="orange" />
+        <meta charSet="utf-8"/>
+        <meta name="viewport" content="width=device-width"/>
       </Head>
       <div className={`dark:bg-gray-400 dark:text-white min-h-screen`}>
         <div className={`mx-auto flex flex-col max-w-xl`}>

@@ -11,7 +11,7 @@ export default function PostPage({ postData }: { postData: any }) {
   return (
     <>
       <Head>
-        <title>{postData.title}</title>
+        <title key="title">{postData.title}</title>
       </Head>
       <article
         className={"prose lg:prose-stone dark:prose-invert"}
