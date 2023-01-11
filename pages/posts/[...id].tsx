@@ -13,11 +13,6 @@ export default function PostPage({ postData }: { postData: any }) {
       <Head>
         <title>{postData.title}</title>
       </Head>
-
-      {postData.title}
-      <br />
-      {postData.id}
-      <br />
       <article
         className={"prose lg:prose-stone dark:prose-invert"}
         dangerouslySetInnerHTML={{ __html: postData.contentHtml }}

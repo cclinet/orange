@@ -11,5 +11,5 @@ export async function getStaticProps() {
 }
 
 export default function Home({ allPostsData }: { allPostsData: Post[] }) {
-  return <Index allPostsData={allPostsData} />;
+  return <Index allPostsData={allPostsData}  root={'/journal'}/>;
 }
