@@ -13,6 +13,7 @@ module.exports = {
         sans: [...fontFamily.sans],
         serif: ["var(--font-noto-serif)"],
         mono: [...fontFamily.mono],
+        italianno: ["var(--font-italianno)"],
       },
     },
   },
