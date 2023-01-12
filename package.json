@@ -32,7 +32,6 @@
     "fs": "0.0.1-security",
     "gray-matter": "^4.0.3",
     "postcss": "^8.4.20",
-    "postcss-100vh-fix": "^1.0.2",
     "prettier": "2.8.1",
     "rehype-mathjax": "^4.0.2",
     "rehype-stringify": "^9.0.3",
