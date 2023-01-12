@@ -19,6 +19,7 @@ specifiers:
   next: 13.1.1
   onnxruntime-web: ^1.13.1
   postcss: ^8.4.20
+  postcss-100vh-fix: ^1.0.2
   prettier: 2.8.1
   react: 18.2.0
   react-dom: 18.2.0
@@ -55,6 +56,7 @@ devDependencies:
   fs: registry.npmmirror.com/fs/0.0.1-security
   gray-matter: registry.npmmirror.com/gray-matter/4.0.3
   postcss: registry.npmmirror.com/postcss/8.4.20
+  postcss-100vh-fix: registry.npmmirror.com/postcss-100vh-fix/1.0.2_postcss@8.4.20
   prettier: registry.npmmirror.com/prettier/2.8.1
   rehype-mathjax: registry.npmmirror.com/rehype-mathjax/4.0.2
   rehype-stringify: registry.npmmirror.com/rehype-stringify/9.0.3
@@ -6763,6 +6765,23 @@ packages:
     version: 3.4.0
     engines: { node: ">=4.0.0" }
     dev: false
+
+  registry.npmmirror.com/postcss-100vh-fix/1.0.2_postcss@8.4.20:
+    resolution:
+      {
+        integrity: sha512-t7vqk9AfjI4fXmWlQCEiMZFFhi1hro4WlECINI1TV6Qh1XapUJE++gCmNr95F5Hen/+bz1OmO+SiSB9TZmFmSg==,
+        registry: https://registry.npm.taobao.org/,
+        tarball: https://registry.npmmirror.com/postcss-100vh-fix/-/postcss-100vh-fix-1.0.2.tgz,
+      }
+    id: registry.npmmirror.com/postcss-100vh-fix/1.0.2
+    name: postcss-100vh-fix
+    version: 1.0.2
+    engines: { node: ">=10.0" }
+    peerDependencies:
+      postcss: ^8.1.0
+    dependencies:
+      postcss: registry.npmmirror.com/postcss/8.4.20
+    dev: true
 
   registry.npmmirror.com/postcss-import/14.1.0_postcss@8.4.20:
     resolution:
