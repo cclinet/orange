@@ -15,7 +15,7 @@ const paths: { name: string; link: string }[] = [
 //   System = "System",
 // }
 
-export default function Header({}) {
+export default function NavBar({}) {
   return (
     <nav
       aria-label="Site Nav"
