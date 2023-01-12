@@ -8,9 +8,5 @@ module.exports = {
   webpack: (config, {}) => {
     config.resolve.fallback = { fs: false };
     return config;
-  },
-  i18n: {
-    locales: ["zh-CN", "zh", "zh-Hans", "en-US"],
-    defaultLocale: "zh-CN",
-  },
+  }
 };

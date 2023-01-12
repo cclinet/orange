@@ -5,7 +5,7 @@ import ThemeButton from "./themeButton";
 
 const paths: { name: string; link: string }[] = [
   { name: "home", link: "/" },
-  { name: "posts", link: "/posts" },
+  { name: "post", link: "/post" },
   { name: "journal", link: "/posts/journal" },
   { name: "model", link: "/model" },
 ];
