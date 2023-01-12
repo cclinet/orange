@@ -3,6 +3,7 @@ import "./globals.css";
 import { Noto_Serif_SC, Italianno } from "@next/font/google";
 import React from "react";
 import NavBar from "./navBar";
+import ThemeProvider from "./theme-provider";
 
 const notoSerif = Noto_Serif_SC({
   weight: ["400"],
@@ -21,9 +22,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="zh" className={`${notoSerif.variable} ${italianno.variable}`}>
-      <body className={"flex flex-col max-w-screen-xl"}>
-        <NavBar />
-        {children}
+      <body className={"flex flex-col mx-auto max-w-xl"}>
+        <ThemeProvider>
+          <NavBar />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

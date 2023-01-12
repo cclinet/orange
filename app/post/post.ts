@@ -8,15 +8,14 @@ import remarkRehype from "remark-rehype";
 import rehypeMathjaxBrowser from "rehype-mathjax/browser";
 import rehypeStringify from "rehype-stringify";
 
-export interface Post{
-  id:string
-  title:string
-  timestamp:number
-  content?: string
+export interface Post {
+  id: string;
+  title: string;
+  timestamp: number;
+  content?: string;
 }
 
 const postsDirectory = path.join(process.cwd(), "posts");
-
 
 export async function getPosts() {
   let paths: string[][] = [];
@@ -72,7 +71,7 @@ export async function getSortedPostsData(subDirectory: string) {
   });
 }
 
-export async function getPostById(id:string[]) {
+export async function getPostById(id: string[]) {
   const relativePath = id.join("/") + ".md";
   const fullPath = path.join(postsDirectory, relativePath);
   const fileContents = fs.readFileSync(fullPath, "utf8");
