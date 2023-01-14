@@ -2,7 +2,7 @@ import { createHash } from "crypto";
 import fs from "fs/promises";
 import path from "path";
 import matter from "gray-matter";
-import { Category } from ".prisma/client";
+import { Category } from "@prisma/client";
 import * as process from "process";
 
 const postsDirectory = path.join(process.cwd(), "posts");
