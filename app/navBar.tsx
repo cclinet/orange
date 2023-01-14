@@ -7,14 +7,14 @@ const paths: { name: string; link: string }[] = [
   { name: "home", link: "/" },
   { name: "post", link: "/post" },
   { name: "journal", link: "/post/journal" },
-  { name: "model", link: "/model" },
+  // { name: "model", link: "/model" },
 ];
 
 export default function NavBar({}) {
   return (
     <nav
       aria-label="Site Nav"
-      className="flex items-center mx-auto gap-6 px-4 sm:px-6 lg:px-8 text-sm mt-3"
+      className="flex items-center mx-auto gap-6 px-4 sm:px-6 lg:px-8 text-sm lg:text-lg mt-4"
     >
       {paths.map((path, index) => (
         <Link

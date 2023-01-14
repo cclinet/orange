@@ -12,9 +12,10 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: [...fontFamily.sans],
-        serif: ["var(--font-noto-serif)"],
+        serif: [...fontFamily.serif],
         mono: [...fontFamily.mono],
         italianno: ["var(--font-italianno)"],
+        xiaowei: ["var(--font-zcool-xiaowei)"],
       },
     },
   },

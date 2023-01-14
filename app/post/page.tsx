@@ -1,4 +1,4 @@
-import { getSortedPostsData } from "./post";
+import { getSortedPostsData } from "./post_utils";
 import Index from "./index";
 
 export default async function Page() {

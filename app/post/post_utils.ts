@@ -1,14 +1,14 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import { remark } from "remark";
-import html from "remark-html";
 import remarkMath from "remark-math";
 import remarkRehype from "remark-rehype";
+import { unified } from "unified";
 import rehypeMathjaxBrowser from "rehype-mathjax/browser";
 import rehypeStringify from "rehype-stringify";
-
-export interface Post {
+import rehypeHighlight from "rehype-highlight";
+import remarkParse from "remark-parse";
+export interface Post_utils {
   id: string;
   title: string;
   timestamp: number;
@@ -62,7 +62,7 @@ export async function getSortedPostsData(subDirectory: string) {
       };
     });
   // Sort posts by date
-  return allPostsData.sort((a: Post, b: Post) => {
+  return allPostsData.sort((a: Post_utils, b: Post_utils) => {
     if (a.timestamp < b.timestamp) {
       return 1;
     } else {
@@ -76,13 +76,16 @@ export async function getPostById(id: string[]) {
   const fullPath = path.join(postsDirectory, relativePath);
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const matterResult = matter(fileContents);
-  const processedContent = await remark()
-    .use(html)
+
+  const processedContent = await unified()
+    .use(remarkParse)
     .use(remarkMath)
     .use(remarkRehype)
     .use(rehypeMathjaxBrowser)
+    .use(rehypeHighlight)
     .use(rehypeStringify)
     .process(matterResult.content);
+
   const contentHtml = processedContent.toString();
   const title = matterResult.data.title;
   return {

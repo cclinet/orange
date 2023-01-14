@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Post } from "./post";
+import { Post_utils } from "./post_utils";
 
 function TimestampToString(timestamp: number) {
   const date = new Date(timestamp);
@@ -14,29 +14,25 @@ export default function Index({
   allPostsData,
   root,
 }: {
-  allPostsData: Post[];
+  allPostsData: Post_utils[];
   root: string;
 }) {
   return (
-    <div>
-      <ul className={`flex flex-col gap-y-10`}>
-        {allPostsData.map(({ id, timestamp, title }, index) => (
-          <li key={index}>
-            <Link
-              href={`/post${root}/${id}`}
-              className={`flex flex-row justify-between text-black  hover:text-gray-700`}
-            >
-              <span className={`text-lg`}>{title}</span>
-              <hr
-                className={`grow self-end border-dotted mb-2 mx-2 border-slate-800 hover:border-slate-500`}
-              />
-              <span className={`text-base`}>
-                {TimestampToString(timestamp)}
-              </span>
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <ul className={`flex flex-col gap-y-10 mt-32 font-xiaowei`}>
+      {allPostsData.map(({ id, timestamp, title }, index) => (
+        <li key={index}>
+          <Link
+            href={`/post${root}/${id}`}
+            className={`flex flex-row justify-between text-black  hover:text-gray-700/75`}
+          >
+            <span className={`text-lg`}>{title}</span>
+            <hr
+              className={`grow self-end border-dotted mb-2 mx-2 border-slate-800 hover:border-slate-500`}
+            />
+            <span className={`text-base`}>{TimestampToString(timestamp)}</span>
+          </Link>
+        </li>
+      ))}
+    </ul>
   );
 }
