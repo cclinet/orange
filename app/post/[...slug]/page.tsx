@@ -12,7 +12,7 @@ export default async function Post({ params }: { params: { slug: string[] } }) {
     return (
       <>
         <article
-          className={"prose mt-16 lg:prose-stone dark:prose-invert"}
+          className={"prose mt-16 dark:prose-invert prose-blockquote:text-sm"}
           dangerouslySetInnerHTML={{ __html: contentHtml }}
         />
         <MathJaxScript />
