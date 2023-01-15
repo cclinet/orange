@@ -1,10 +1,10 @@
-import { getPostById } from "../post_utils";
+import { getPostTitleBySlug } from "../../../prisma/utils";
 export default async function Head({ params }: { params: any }) {
-  const postData = await getPostById(params.id);
+  const postData = await getPostTitleBySlug(params.slug.at(-1));
 
   return (
     <>
-      <title key="title">{postData.title}</title>
+      <title key="title">{postData}</title>
       <meta charSet="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <link

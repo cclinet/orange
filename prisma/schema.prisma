@@ -1,9 +1,11 @@
 generator client {
   provider = "prisma-client-js"
+  previewFeatures = ["referentialIntegrity"]
 }
+
 datasource db {
-  provider = "mysql"
-  url = env("DATABASE_URL")
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
   relationMode = "prisma"
 }
 
@@ -13,16 +15,25 @@ enum Category {
 }
 
 model Post {
-  id              Int       @id @default(autoincrement())
-  slug            String    @unique
-  title           String
-  content         String?
-  createdAt       DateTime  @default(now())
-  updatedAt       DateTime  @updatedAt
-  md5             Bytes     @db.Binary(16) @unique
-  published       Boolean   @default(true)
-  category        Category
+  id        Int          @id @default(autoincrement())
+  slug      String       @unique
+  title     String
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+  md5       Bytes        @unique @db.Binary(16)
+  published Boolean      @default(true)
+  category  Category
+  content   PostContent?
 
   @@index([slug])
-  @@index([createdAt(sort: Desc)])
+  @@index([createdAt])
+}
+
+model PostContent {
+  id      Int     @id @default(autoincrement())
+  content String? @db.Text
+  post    Post    @relation(fields: [postId], references: [id])
+  postId  Int     @unique
+
+  @@index([postId])
 }
