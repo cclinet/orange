@@ -1,15 +1,14 @@
 import MathJaxScript from "./mathJax-script";
 import { mdToHtml } from "../post_utils";
 import { getAllPublishPost, getPostBySlug } from "../../../prisma/utils";
-export const revalidate = 3600; // revalidate every hour
+import { notFound } from "next/navigation";
 
-export default async function Post({ params }: { params: any }) {
-  const md = await getPostBySlug(params.slug.at(-1));
-  // const postData = await getPostById(params.id);
+export default async function Post({ params }: { params: { slug: string[] } }) {
+  const md = await getPostBySlug(params.slug.at(-1)!);
   if (md) {
+    console.log(md);
+    console.log("r1");
     const contentHtml = await mdToHtml(md);
-
-    // await upsertPosts();
     return (
       <>
         <article
@@ -20,6 +19,7 @@ export default async function Post({ params }: { params: any }) {
       </>
     );
   } else {
+    notFound();
   }
 }
 

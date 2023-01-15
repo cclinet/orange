@@ -5,6 +5,7 @@ import matter from "gray-matter";
 import { Category, PrismaClient } from "@prisma/client";
 import * as process from "process";
 
+const prisma = new PrismaClient();
 const postsDirectory = path.join(process.cwd(), "posts");
 
 interface Post {
@@ -92,43 +93,55 @@ export async function extractPosts() {
 }
 
 export async function getPostBySlug(slug: string) {
-  const prisma = new PrismaClient();
-  const post = await prisma.post.findUnique({
-    where: { slug: slug },
-    select: { content: { select: { content: true } } },
-  });
-  return post?.content?.content;
+  try {
+    const post = await prisma.post.findUnique({
+      where: { slug: slug },
+      select: { content: { select: { content: true } } },
+    });
+    return post?.content?.content;
+  } catch (error) {
+    return null;
+  }
 }
 
 export async function getPostTitleBySlug(slug: string) {
-  const prisma = new PrismaClient();
-  const post = await prisma.post.findUnique({
-    where: { slug: slug },
-    select: { title: true },
-  });
-  return post?.title;
+  try {
+    const post = await prisma.post.findUnique({
+      where: { slug: slug },
+      select: { title: true },
+    });
+    return post?.title;
+  } catch (error) {
+    return null;
+  }
 }
 
 export async function getAllPublishPost(published: boolean = true) {
-  const prisma = new PrismaClient();
-  const posts = await prisma.post.findMany({
-    where: { published: published },
-    select: { category: true, slug: true },
-  });
-  return posts.map(({ category, slug }) => {
-    if (category === Category.POST) {
-      return [slug];
-    } else {
-      return [category, slug];
-    }
-  });
+  try {
+    const posts = await prisma.post.findMany({
+      where: { published: published },
+      select: { category: true, slug: true },
+    });
+    return posts.map(({ category, slug }) => {
+      if (category === Category.POST) {
+        return [slug];
+      } else {
+        return [category, slug];
+      }
+    });
+  } catch (error) {
+    return [];
+  }
 }
 
 export async function getPostsByCategory(category: string) {
-  const prisma = new PrismaClient();
-  return await prisma.post.findMany({
-    where: { category: getCategoryReverse(category) },
-    orderBy: { createdAt: "desc" },
-    select: { title: true, createdAt: true, slug: true },
-  });
+  try {
+    return await prisma.post.findMany({
+      where: { category: getCategoryReverse(category) },
+      orderBy: { createdAt: "desc" },
+      select: { title: true, createdAt: true, slug: true },
+    });
+  } catch (error) {
+    return [];
+  }
 }
