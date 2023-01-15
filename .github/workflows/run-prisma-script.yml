@@ -11,4 +11,4 @@ jobs:
         with:
           version: 6.0.2
       - run: pnpm install ts-node @prisma/client
-      - run: pnpx ts-node .\prisma\script.ts
+      - run: pnpx ts-node ./prisma/script.ts
