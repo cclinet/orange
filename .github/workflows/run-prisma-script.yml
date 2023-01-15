@@ -2,15 +2,18 @@ on:
   - push
   - pull_request
 
+env:
+  DATABASE_URL: ${{ secrets.DATABASE_URL }}
+
 jobs:
   install:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v3
-      - run: ls -al .
       - uses: pnpm/action-setup@v2
         with:
           version: 6.0.2
-      - run: pnpm install ts-node @prisma/client
+      - run: pnpm install
+      - run: pnpx prisma generate
       - run: pnpx ts-node ./prisma/script.ts
