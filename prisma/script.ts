@@ -13,6 +13,7 @@ export async function upsertPosts() {
         slug: eachLocalPost.slug,
         title: eachLocalPost.title,
         md5: eachLocalPost.md5,
+        createdAt: eachLocalPost.createdAt,
         category: eachLocalPost.category,
         content: {
           create: {
