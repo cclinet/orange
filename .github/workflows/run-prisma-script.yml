@@ -1,7 +1,7 @@
 on:
-  - push
-  - pull_request
-
+  push:
+    tags:
+      - *
 env:
   DATABASE_URL: ${{ secrets.DATABASE_URL }}
 

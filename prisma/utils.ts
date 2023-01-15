@@ -124,10 +124,11 @@ export async function getAllPublishPost(published: boolean = true) {
   });
 }
 
-export async function getPostsByCaterory(category: string) {
+export async function getPostsByCategory(category: string) {
   const prisma = new PrismaClient();
   return await prisma.post.findMany({
     where: { category: getCategoryReverse(category) },
+    orderBy: { createdAt: "desc" },
     select: { title: true, createdAt: true, slug: true },
   });
 }

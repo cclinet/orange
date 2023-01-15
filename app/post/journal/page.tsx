@@ -1,7 +1,7 @@
 import Index from "../index";
-import { getPostsByCaterory } from "../../../prisma/utils";
+import { getPostsByCategory } from "../../../prisma/utils";
 
 export default async function Page() {
-  const posts = await getPostsByCaterory("journal");
+  const posts = await getPostsByCategory("journal");
   return <Index allPostsData={posts} root={"/journal"}></Index>;
 }
