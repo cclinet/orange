@@ -3,7 +3,7 @@ import "./globals.css";
 import { Italianno, ZCOOL_XiaoWei } from "@next/font/google";
 import React from "react";
 import NavBar from "./navBar";
-import ThemeProvider from "./theme-provider";
+
 export const revalidate = 86400;
 
 const italianno = Italianno({
@@ -28,10 +28,8 @@ export default function RootLayout({
       className={`${italianno.variable} ${zcoolXiaoWei.variable}`}
     >
       <body className={"flex flex-col px-4 mx-auto max-w-xl"}>
-        <ThemeProvider>
-          <NavBar />
-          {children}
-        </ThemeProvider>
+        <NavBar />
+        {children}
       </body>
     </html>
   );
