@@ -1,13 +1,10 @@
-"use client";
-
 import Link from "next/link";
-import ThemeButton from "./theme-button";
 
 const paths: { name: string; link: string }[] = [
   { name: "home", link: "/" },
   { name: "post", link: "/post" },
   { name: "journal", link: "/post/journal" },
-  // { name: "model", link: "/model" },
+  { name: "about", link: "/about" },
 ];
 
 export default function NavBar({}) {
