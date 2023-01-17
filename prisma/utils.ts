@@ -92,7 +92,9 @@ export async function extractPosts() {
   return posts;
 }
 
-export async function getPostBySlug(slug: string) {
+export async function getPostBySlug(
+  slug: string
+): Promise<string | null | undefined> {
   try {
     const post = await prisma.post.findUnique({
       where: { slug: slug },
@@ -104,7 +106,9 @@ export async function getPostBySlug(slug: string) {
   }
 }
 
-export async function getPostTitleBySlug(slug: string) {
+export async function getPostTitleBySlug(
+  slug: string
+): Promise<string | null | undefined> {
   try {
     const post = await prisma.post.findUnique({
       where: { slug: slug },
@@ -116,7 +120,9 @@ export async function getPostTitleBySlug(slug: string) {
   }
 }
 
-export async function getAllPublishPost(published: boolean = true) {
+export async function getAllPublishPost(
+  published: boolean = true
+): Promise<string[][]> {
   try {
     const posts = await prisma.post.findMany({
       where: { published: published },
@@ -134,7 +140,9 @@ export async function getAllPublishPost(published: boolean = true) {
   }
 }
 
-export async function getPostsByCategory(category: string) {
+export async function getPostsByCategory(
+  category: string
+): Promise<{ title: string; slug: string; createdAt: Date }[]> {
   try {
     return await prisma.post.findMany({
       where: { category: getCategoryReverse(category) },

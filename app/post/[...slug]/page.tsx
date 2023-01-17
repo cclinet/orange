@@ -6,8 +6,6 @@ import { notFound } from "next/navigation";
 export default async function Post({ params }: { params: { slug: string[] } }) {
   const md = await getPostBySlug(params.slug.at(-1)!);
   if (md) {
-    console.log(md);
-    console.log("r1");
     const contentHtml = await mdToHtml(md);
     return (
       <>
