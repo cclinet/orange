@@ -10,13 +10,12 @@
     "prettier": "prettier --write . "
   },
   "dependencies": {
+    "@prisma/client": "^4.8.1",
     "next": "13.1.2",
     "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "@prisma/client": "^4.8.1"
+    "react-dom": "18.2.0"
   },
   "devDependencies": {
-    "ts-node": "latest",
     "@next/font": "^13.1.2",
     "@tailwindcss/typography": "^0.5.9",
     "@types/lodash": "^4.14.191",
@@ -30,6 +29,7 @@
     "postcss": "^8.4.21",
     "postcss-100vh-fix": "^1.0.2",
     "prettier": "2.8.3",
+    "prisma": "^4.8.1",
     "rehype-highlight": "^6.0.0",
     "rehype-mathjax": "^4.0.2",
     "rehype-stringify": "^9.0.3",
@@ -37,6 +37,7 @@
     "remark-parse": "^10.0.1",
     "remark-rehype": "^10.1.0",
     "tailwindcss": "^3.2.4",
+    "ts-node": "latest",
     "typescript": "4.9.4",
     "unified": "^10.1.2",
     "webpack": "^5.75.0"
