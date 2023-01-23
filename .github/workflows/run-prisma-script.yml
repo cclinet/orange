@@ -1,7 +1,7 @@
 on:
   push:
-    tags:
-      - "*"
+    paths:
+      - '**.md'
 env:
   DATABASE_URL: ${{ secrets.DATABASE_URL }}
 
