@@ -11,6 +11,8 @@ export default async function Head({ params }: { params: any }) {
       <link
         rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.7.0/build/styles/androidstudio.min.css"
+        // @ts-ignore
+        precedence="default"
       />
     </>
   );
