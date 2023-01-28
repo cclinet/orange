@@ -2,6 +2,7 @@ import { getPostTitleBySlug } from "../../../prisma/utils";
 export default async function Head({ params }: { params: any }) {
   const postData = await getPostTitleBySlug(params.slug.at(-1));
 
+
   return (
     <>
       <title key="title">{postData}</title>
@@ -10,8 +11,6 @@ export default async function Head({ params }: { params: any }) {
       <link
         rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.7.0/build/styles/androidstudio.min.css"
-        // @ts-ignore
-        precedence="default"
       />
     </>
   );
