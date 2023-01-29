@@ -2,7 +2,6 @@ import { getPostTitleBySlug } from "../../../prisma/utils";
 export default async function Head({ params }: { params: any }) {
   const postData = await getPostTitleBySlug(params.slug.at(-1));
 
-
   return (
     <>
       <title key="title">{postData}</title>

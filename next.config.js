@@ -2,6 +2,7 @@
 module.exports = {
   experimental: {
     appDir: true,
+    esmExternals: "loose",
   },
   reactStrictMode: true,
   swcMinify: true,
