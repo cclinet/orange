@@ -19,7 +19,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="zh" className={`${italianno.variable}`}>
-      <body className={"flex flex-col px-4 mx-auto max-w-xl min-h-screen  bg-white"}>
+      <body
+        className={"flex flex-col px-4 mx-auto max-w-xl min-h-screen  bg-white"}
+      >
         <NavBar />
         <main className={"grow"}>{children}</main>
       </body>

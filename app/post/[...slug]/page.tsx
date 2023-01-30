@@ -2,6 +2,7 @@ import MathJaxScript from "./mathJax-script";
 import { mdToHtml } from "../post_utils";
 import { getAllPublishPost, getPostBySlug } from "../../../prisma/utils";
 import { notFound } from "next/navigation";
+import Footer from "./footer";
 
 export default async function Post({ params }: { params: { slug: string[] } }) {
   const md = await getPostBySlug(params.slug.at(-1)!);
@@ -13,6 +14,7 @@ export default async function Post({ params }: { params: { slug: string[] } }) {
           className={"prose mt-16 dark:prose-invert prose-blockquote:text-sm"}
           dangerouslySetInnerHTML={{ __html: contentHtml }}
         />
+        <Footer/>
         <MathJaxScript />
       </>
     );
