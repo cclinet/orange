@@ -2,12 +2,12 @@
 module.exports = {
   experimental: {
     appDir: true,
-    esmExternals: "loose",
+    // esmExternals: "loose",
   },
   reactStrictMode: true,
   swcMinify: true,
-  webpack: (config, {}) => {
-    config.resolve.fallback = { fs: false };
-    return config;
-  },
+  // webpack: (config, {}) => {
+  //   config.resolve.fallback = { fs: false };
+  //   return config;
+  // },
 };
