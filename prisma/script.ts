@@ -5,6 +5,7 @@ import { extractPosts } from "./utils";
 const prisma = new PrismaClient();
 
 export async function upsertPosts() {
+  console.log(`______publish______`);
   const localPosts = await extractPosts();
   for (const eachLocalPost of localPosts) {
     const post = await prisma.post.upsert({
@@ -36,6 +37,14 @@ export async function upsertPosts() {
     });
     console.log(post);
   }
+  const result = await prisma.post.updateMany({
+    where: { slug: { notIn: localPosts.map((post) => post.slug) } },
+    data: {
+      published: false,
+    },
+  });
+  console.log(`______not publish______`);
+  console.log(result);
 }
 
 upsertPosts()

@@ -2,6 +2,7 @@ on:
   push:
     paths:
       - "**.md"
+      - "prisma/script.ts"
 env:
   DATABASE_URL: ${{ secrets.DATABASE_URL }}
 
