@@ -1,6 +1,6 @@
 // These styles apply to every route in the application
 import "./globals.css";
-import { Italianno, ZCOOL_XiaoWei } from "@next/font/google";
+import { Italianno } from "@next/font/google";
 import React from "react";
 import NavBar from "./navBar";
 
@@ -11,11 +11,6 @@ const italianno = Italianno({
   subsets: ["latin"],
   variable: "--font-italianno",
 });
-const zcoolXiaoWei = ZCOOL_XiaoWei({
-  weight: ["400"],
-  subsets: ["latin"],
-  variable: "--font-zcool-xiaowei",
-});
 
 export default function RootLayout({
   children,
@@ -23,11 +18,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html
-      lang="zh"
-      className={`${italianno.variable} ${zcoolXiaoWei.variable}`}
-    >
-      <body className={"flex flex-col px-4 mx-auto max-w-xl min-h-screen"}>
+    <html lang="zh" className={`${italianno.variable}`}>
+      <body className={"flex flex-col px-4 mx-auto max-w-xl min-h-screen  bg-white"}>
         <NavBar />
         <main className={"grow"}>{children}</main>
       </body>

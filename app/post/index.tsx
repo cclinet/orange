@@ -16,7 +16,7 @@ export default function Index({
   root: string;
 }) {
   return (
-    <ul className={`flex flex-col gap-y-10 mt-32 font-xiaowei`}>
+    <ul className={`flex flex-col gap-y-10 mt-32 font-serif`}>
       {allPostsData.map(({ title, createdAt, slug }, index) => (
         <li key={index}>
           <Link

@@ -15,7 +15,6 @@ module.exports = {
         serif: [...fontFamily.serif],
         mono: [...fontFamily.mono],
         italianno: ["var(--font-italianno)"],
-        xiaowei: ["var(--font-zcool-xiaowei)"],
       },
     },
   },
