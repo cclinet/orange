@@ -141,11 +141,12 @@ export async function getAllPublishPost(
 }
 
 export async function getPostsByCategory(
-  category: string
+  category: string,
+  published: boolean = true
 ): Promise<{ title: string; slug: string; createdAt: Date }[]> {
   try {
     return await prisma.post.findMany({
-      where: { category: getCategoryReverse(category) },
+      where: { category: getCategoryReverse(category), published: published },
       orderBy: { createdAt: "desc" },
       select: { title: true, createdAt: true, slug: true },
     });
