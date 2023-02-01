@@ -5,7 +5,7 @@ date: "2023-02-01"
 
 # CMake 在 subdirectory 中 使用 import
 
-常规的targets 是 global的，然而 IMPORTED target 默认为local，因此需要加上 GLOBAL
+常规的 targets 是 global 的，然而 IMPORTED target 默认为 local，因此需要加上 GLOBAL
 
 ```cmake
 add_library(xxx SHARED IMPORTED GLOBAL)
