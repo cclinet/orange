@@ -144,9 +144,15 @@ export async function getPostsByCategory(
   category: string,
   published: boolean = true
 ): Promise<{ title: string; slug: string; createdAt: Date }[]> {
+  let query;
+  if (published) {
+    query = { category: getCategoryReverse(category), published: true };
+  } else {
+    query = { category: getCategoryReverse(category) };
+  }
   try {
     return await prisma.post.findMany({
-      where: { category: getCategoryReverse(category), published: published },
+      where: query,
       orderBy: { createdAt: "desc" },
       select: { title: true, createdAt: true, slug: true },
     });
