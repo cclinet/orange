@@ -17,6 +17,5 @@ export async function mdToHtml(content: string) {
     .use(rehypeStringify)
     .process(content);
 
-  const contentHtml = processedContent.toString();
-  return contentHtml;
+  return processedContent.toString();
 }

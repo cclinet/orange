@@ -5,7 +5,7 @@ date: "2023-02-03"
 
 # 使用 C++ 与 JNI 的第一步
 
-这里以介绍在 Intellj IDE 中编写 jni 的步骤
+这里以介绍在 Intellij IDE 中编写 jni 的步骤
 
 ## JNI 是什么
 
@@ -122,6 +122,6 @@ JNIEXPORT void JNICALL Java_org_cclin_hellojni_HelloJNI_sayHello
 （以下内容未经测试）
 在实际使用中，.so 文件会被放入到 resource 目录下，
 通过 Class.getResource 或者 ClassLoader.getResource 获取资源，
-存储到临时文件中，再加载该临时文件，而不用通过 Djava.library.path 显示指定路径
+存储到临时文件中，再加载该临时文件，而不用通过 `Djava.library.path` 显示指定路径
 
 <https://docs.oracle.com/en/java/javase/11/docs/specs/jni/design.html>
