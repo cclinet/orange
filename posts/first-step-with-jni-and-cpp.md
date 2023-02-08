@@ -76,6 +76,7 @@ JNIEXPORT void JNICALL Java_org_cclin_hellojni_HelloJNI_sayHello
 ```
 
 ## 配置 CmakeLists.txt 并编写实现
+
 ```cmake
 cmake_minimum_required(VERSION 3.24)
 project(jni)
