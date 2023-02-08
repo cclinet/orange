@@ -40,11 +40,10 @@ public class HelloJNI {
 
 点击*编译*按钮，会在项目根目录生成 out 文件夹
 
+随后用以下命令生成头文件
+
 ```bash
-# jdk9 below
 javah -jni -classpath out/production/jni/ -d jni/include org.cclin.hellojni.HelloJNI
-#jdk10+
-javac -jni -classpath out/production/jni/ -d jni/include org.cclin.hellojni.HelloJNI
 ```
 
 其中 classpath 指定类目录，-d 指定输出位置，后面是类名
@@ -77,7 +76,6 @@ JNIEXPORT void JNICALL Java_org_cclin_hellojni_HelloJNI_sayHello
 ```
 
 ## 配置 CmakeLists.txt 并编写实现
-
 ```cmake
 cmake_minimum_required(VERSION 3.24)
 project(jni)

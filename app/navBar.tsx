@@ -4,6 +4,7 @@ const paths: { name: string; link: string }[] = [
   { name: "home", link: "/" },
   { name: "post", link: "/post" },
   { name: "journal", link: "/post/journal" },
+  { name: "note", link: "/note" },
   { name: "about", link: "/about" },
 ];
 
