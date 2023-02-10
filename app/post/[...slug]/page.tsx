@@ -1,8 +1,9 @@
 import MathJaxScript from "./mathJax-script";
 import { mdToHtml } from "./utils";
-import { getAllPublishPost, getPostBySlug } from "../../../prisma/utils";
+import { getAllPublishPost, getPostBySlug, getPostTitleBySlug } from "../../../prisma/utils";
 import { notFound } from "next/navigation";
 import Footer from "./footer";
+
 
 export default async function Post({ params }: { params: { slug: string[] } }) {
   const md = await getPostBySlug(params.slug.at(-1)!);
