@@ -123,9 +123,15 @@ export async function getPostTitleBySlug(
 export async function getAllPublishPost(
   published: boolean = true
 ): Promise<string[][]> {
+  let query;
+  if (published) {
+    query = { published: true };
+  } else {
+    query = {};
+  }
   try {
     const posts = await prisma.post.findMany({
-      where: { published: published },
+      where: query,
       select: { category: true, slug: true },
     });
     return posts.map(({ category, slug }) => {
