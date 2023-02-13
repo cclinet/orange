@@ -3,8 +3,14 @@ import "./globals.css";
 import { Italianno } from "@next/font/google";
 import React from "react";
 import NavBar from "./navBar";
+import type { Metadata } from "next";
 
 export const revalidate = 86400;
+
+export const metadata: Metadata = {
+  title: "cclin's Orange",
+  description: "personal website of cclin which record life and knowledge",
+};
 
 const italianno = Italianno({
   weight: ["400"],
