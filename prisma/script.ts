@@ -8,6 +8,17 @@ export async function upsertPosts() {
   console.log(`______publish______`);
   const localPosts = await extractPosts();
   for (const eachLocalPost of localPosts) {
+    const unchanged_post = await prisma.post.findUnique({
+      where: {
+        slug: eachLocalPost.slug,
+        md5: eachLocalPost.md5,
+      },
+    });
+    if (unchanged_post) {
+      console.log("____unchanged____");
+      console.log(unchanged_post);
+      continue;
+    }
     const post = await prisma.post.upsert({
       where: { slug: eachLocalPost.slug },
       create: {
@@ -15,7 +26,7 @@ export async function upsertPosts() {
         title: eachLocalPost.title,
         md5: eachLocalPost.md5,
         createdAt: eachLocalPost.createdAt,
-        published:eachLocalPost.published,
+        published: eachLocalPost.published,
         category: eachLocalPost.category,
         content: {
           create: {
@@ -28,7 +39,7 @@ export async function upsertPosts() {
         title: eachLocalPost.title,
         md5: eachLocalPost.md5,
         createdAt: eachLocalPost.createdAt,
-        published:eachLocalPost.published,
+        published: eachLocalPost.published,
         category: eachLocalPost.category,
         content: {
           update: {
@@ -37,6 +48,7 @@ export async function upsertPosts() {
         },
       },
     });
+    console.log("____update____");
     console.log(post);
   }
   const result = await prisma.post.updateMany({
