@@ -8,15 +8,13 @@ export async function upsertPosts() {
   console.log(`______publish______`);
   const localPosts = await extractPosts();
   for (const eachLocalPost of localPosts) {
-
     const unchangedPost = await prisma.post.findUnique({
       where: {
         slug: eachLocalPost.slug,
       },
     });
-    console.log(unchangedPost?.md5)
-    console.log(eachLocalPost.md5)
-    if (unchangedPost?.md5 === eachLocalPost.md5) {
+
+    if (unchangedPost && eachLocalPost.md5.equals(unchangedPost.md5)) {
       console.log("____unchanged____");
       console.log(unchangedPost);
       continue;
@@ -51,15 +49,18 @@ export async function upsertPosts() {
         },
       },
     });
+
     console.log("____update____");
     console.log(post);
   }
+
   const result = await prisma.post.updateMany({
     where: { slug: { notIn: localPosts.map((post) => post.slug) } },
     data: {
       published: false,
     },
   });
+
   console.log(`______not publish______`);
   console.log(result);
 }
