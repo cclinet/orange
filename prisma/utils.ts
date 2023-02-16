@@ -75,6 +75,7 @@ export async function extractPosts() {
     //TODO
     const title: string = data.title;
     const date: Date = new Date(data.date);
+    const published: boolean | undefined = data.published;
     const md5 = await getFileMd5(fileContent);
     const cat = getCategoryReverse(category);
 
@@ -85,6 +86,7 @@ export async function extractPosts() {
       createdAt: date,
       md5,
       category: cat,
+      published,
     };
     // console.log(post);
     posts.push(post);

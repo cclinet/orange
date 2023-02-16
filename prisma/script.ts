@@ -15,6 +15,7 @@ export async function upsertPosts() {
         title: eachLocalPost.title,
         md5: eachLocalPost.md5,
         createdAt: eachLocalPost.createdAt,
+        published:eachLocalPost.published,
         category: eachLocalPost.category,
         content: {
           create: {
@@ -27,6 +28,7 @@ export async function upsertPosts() {
         title: eachLocalPost.title,
         md5: eachLocalPost.md5,
         createdAt: eachLocalPost.createdAt,
+        published:eachLocalPost.published,
         category: eachLocalPost.category,
         content: {
           update: {
