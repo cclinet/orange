@@ -11,10 +11,9 @@ export async function upsertPosts() {
     const unchanged_post = await prisma.post.findUnique({
       where: {
         slug: eachLocalPost.slug,
-        md5: eachLocalPost.md5,
       },
     });
-    if (unchanged_post) {
+    if (unchanged_post?.md5 == eachLocalPost.md5) {
       console.log("____unchanged____");
       console.log(unchanged_post);
       continue;
