@@ -10,6 +10,8 @@ import Footer from "./footer";
 import "@highlightjs/cdn-assets/styles/androidstudio.min.css";
 import type { Metadata } from "next";
 
+export const revalidate = 86400;
+
 export async function generateMetadata({
   params,
 }: {
