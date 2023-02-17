@@ -7,7 +7,7 @@ import {
 } from "../../../prisma/utils";
 import { notFound } from "next/navigation";
 import Footer from "./footer";
-import "@highlightjs/cdn-assets/styles/androidstudio.min.css";
+// import "@highlightjs/cdn-assets/styles/androidstudio.min.css";
 import type { Metadata } from "next";
 
 export const revalidate = 86400;
@@ -27,6 +27,9 @@ export default async function Post({ params }: { params: { slug: string[] } }) {
     const contentHtml = await mdToHtml(md);
     return (
       <>
+        <link rel="stylesheet"
+              href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/androidstudio.min.css">
+          </link>
         <article
           className={"prose mt-16 dark:prose-invert prose-blockquote:text-sm"}
           dangerouslySetInnerHTML={{ __html: contentHtml }}
