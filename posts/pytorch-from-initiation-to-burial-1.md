@@ -18,8 +18,7 @@ date: "2023-02-18"
                 * cpu
                 * cuda
                 * sparse
-                * mkl mkldnn miopen cudnn
-              which simply bind to some backend library.
+                * mkl mkldnn miopen cudnn - 后端库的bind
   * quantized - Quantized tensor (i.e. QTensor) operation implementations. 
 * torch - python 前端，我们 `import torch as tf` 的就是这个目录
     * csrc - 主要是c++的python binding
@@ -125,4 +124,5 @@ __version__ = TorchVersion(internal_version) # 89行
 最后来看`TorchVersion`,这是个很巧妙的设计，在比较早的版本中，`__version__`被设计成了字符串，
 比如`'1.2.1'`,在直接比较时,`'1.4.0'>'1.2.1'`是没有问题的，然而当序号上升到两位数后，
 `'1.10.0'>'1.2.1' == False`,所以pytorch 把字符串用`TorchVersion`这个类包装了一下，来保证
-这种比较不会出现问题。这里设计的很巧妙，我们详细看下。
+这种比较不会出现问题。同时为了加速，实现了一个`_LazyImport`，让程序在比较版本的时候
+才 `import` 相应的第三方库，来加快速度。代码不难，就不详细说了。
