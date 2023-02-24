@@ -1,6 +1,6 @@
 // These styles apply to every route in the application
 import "./globals.css";
-import { Italianno } from "@next/font/google";
+import { Italianno } from "next/font/google";
 import React from "react";
 import NavBar from "./navBar";
 import type { Metadata } from "next";
