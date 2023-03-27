@@ -1,7 +1,8 @@
+name: push-posts-to-planetscale
 on:
   push:
     paths:
-      - "**.md"
+      - "posts/**.md"
       - "prisma/script.ts"
 env:
   DATABASE_URL: ${{ secrets.DATABASE_URL }}
@@ -20,5 +21,9 @@ jobs:
           node-version: 18
           cache: "pnpm"
       - run: pnpm install --frozen-lockfile
+
+  push:
+    needs: steps
+    steps:
       - run: pnpx prisma generate
       - run: pnpx ts-node ./prisma/script.ts
