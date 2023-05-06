@@ -1,8 +1,8 @@
 import MathJaxScript from "./mathJax-script";
 import { mdToHtml } from "./utils";
 import {
-  getAllPublishPost,
   getPostBySlug,
+  getPosts,
   getPostTitleBySlug,
 } from "../../../prisma/utils";
 import { notFound } from "next/navigation";
@@ -21,8 +21,8 @@ export async function generateMetadata({
   return { title: title, authors: { name: "cclin" } };
 }
 
-export default async function Post({ params }: { params: { slug: string[] } }) {
-  const md = await getPostBySlug(params.slug.at(-1)!);
+export default async function Post({ params }: { params: { slug: string } }) {
+  const md = await getPostBySlug(params.slug);
   if (md) {
     const contentHtml = await mdToHtml(md);
     return (
@@ -41,6 +41,6 @@ export default async function Post({ params }: { params: { slug: string[] } }) {
 }
 
 export async function generateStaticParams() {
-  const posts = await getAllPublishPost();
-  return posts.map((post) => ({ slug: post }));
+  const posts = await getPosts();
+  return posts.map((post) => ({ slug: post.slug }));
 }

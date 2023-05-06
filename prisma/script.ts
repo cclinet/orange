@@ -1,68 +1,41 @@
-import { PrismaClient } from "@prisma/client";
+import { Prisma, PrismaClient } from "@prisma/client";
 import * as process from "process";
-import { extractPosts } from "./utils";
+import { getLocalPosts } from "./utils";
 
 const prisma = new PrismaClient();
 
+// export async function upsertPosts() {
+//   console.log(`______publish______`);
+//   const localPosts = await getLocalPosts();
+//   for (const { content, ...metadata } of localPosts) {
+//     const post = await prisma.post.upsert({
+//       where: { slug: metadata.slug },
+//       create: <Prisma.PostCreateInput>metadata,
+//       update: <Prisma.PostUpdateInput>metadata,
+//     });
+//     console.log(post);
+//     await prisma.content.upsert({
+//       where: { postId: post.id },
+//       create: { content, postId: post.id },
+//       update: { content, postId: post.id },
+//     });
+//   }
+// }
+
 export async function upsertPosts() {
   console.log(`______publish______`);
-  const localPosts = await extractPosts();
-  for (const eachLocalPost of localPosts) {
-    const unchangedPost = await prisma.post.findUnique({
-      where: {
-        slug: eachLocalPost.slug,
-      },
-    });
-
-    if (unchangedPost && eachLocalPost.md5.equals(unchangedPost.md5)) {
-      console.log("____unchanged____");
-      console.log(unchangedPost);
-      continue;
-    }
-
+  const localPosts = await getLocalPosts();
+  for (const { content, ...metadata } of localPosts) {
     const post = await prisma.post.upsert({
-      where: { slug: eachLocalPost.slug },
-      create: {
-        slug: eachLocalPost.slug,
-        title: eachLocalPost.title,
-        md5: eachLocalPost.md5,
-        createdAt: eachLocalPost.createdAt,
-        published: eachLocalPost.published,
-        category: eachLocalPost.category,
-        content: {
-          create: {
-            content: eachLocalPost.content,
-          },
-        },
-      },
-      update: {
-        slug: eachLocalPost.slug,
-        title: eachLocalPost.title,
-        md5: eachLocalPost.md5,
-        createdAt: eachLocalPost.createdAt,
-        published: eachLocalPost.published,
-        category: eachLocalPost.category,
-        content: {
-          update: {
-            content: eachLocalPost.content,
-          },
-        },
+      where: { slug: metadata.slug },
+      create: { ...metadata, content: { create: { content } } },
+      update: { ...metadata, content: { update: { content } } },
+      include: {
+        content: true,
       },
     });
-
-    console.log("____update____");
     console.log(post);
   }
-
-  const result = await prisma.post.updateMany({
-    where: { slug: { notIn: localPosts.map((post) => post.slug) } },
-    data: {
-      published: false,
-    },
-  });
-
-  console.log(`______not publish______`);
-  console.log(result);
 }
 
 upsertPosts()

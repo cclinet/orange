@@ -29,10 +29,13 @@ export default function Page() {
           <a href={"https://vercel.com/"} className={"text-slate-500"}>
             Vercel
           </a>{" "}
-          上， 文件则存储在了{" "}
-          <a href={"https://planetscale.com"} className={"text-slate-500"}>
-            PlanetScale
-          </a>{" "}
+          上， 文件则存储在了
+          <del>
+            {" "}
+            <a href={"https://planetscale.com"} className={"text-slate-500"}>
+              PlanetScale
+            </a>{" "}
+          </del> Vercel
           上， 使用了{" "}
           <a href={"https://www.cloudflare.com"} className={"text-slate-500"}>
             Cloudflare

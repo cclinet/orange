@@ -1,29 +1,29 @@
-name: push-posts-to-planetscale
-on:
-  push:
-    paths:
-      - "posts/**.md"
-      - "prisma/script.ts"
-env:
-  DATABASE_URL: ${{ secrets.DATABASE_URL }}
-
-jobs:
-  install:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v3
-      - uses: pnpm/action-setup@v2
-        with:
-          version: 7.26.1
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
-          cache: "pnpm"
-      - run: pnpm install --frozen-lockfile
-
-  push:
-    needs: steps
-    steps:
-      - run: pnpx prisma generate
-      - run: pnpx ts-node ./prisma/script.ts
+#name: push-posts-to-planetscale
+#on:
+#  push:
+#    paths:
+#      - "posts/**.md"
+#      - "prisma/script.ts"
+#env:
+#  DATABASE_URL: ${{ secrets.DATABASE_URL }}
+#
+#jobs:
+#  install:
+#    runs-on: ubuntu-latest
+#
+#    steps:
+#      - uses: actions/checkout@v3
+#      - uses: pnpm/action-setup@v2
+#        with:
+#          version: 7.26.1
+#      - uses: actions/setup-node@v3
+#        with:
+#          node-version: 18
+#          cache: "pnpm"
+#      - run: pnpm install --frozen-lockfile
+#
+#  push:
+#    needs: steps
+#    steps:
+#      - run: pnpx prisma generate
+#      - run: pnpx ts-node ./prisma/script.ts

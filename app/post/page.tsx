@@ -1,9 +1,9 @@
 import Index from "./index";
-import { getPostsByCategory } from "../../prisma/utils";
+import { getPosts } from "../../prisma/utils";
 
 export const revalidate = 86400;
 
 export default async function Page() {
-  const posts = await getPostsByCategory("post", true);
+  const posts = await getPosts();
   return <Index allPostsData={posts} root={""}></Index>;
 }

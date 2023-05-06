@@ -3,7 +3,6 @@ import Link from "next/link";
 const paths: { name: string; link: string }[] = [
   { name: "home", link: "/" },
   { name: "post", link: "/post" },
-  { name: "journal", link: "/post/journal" },
   { name: "about", link: "/about" },
 ];
 

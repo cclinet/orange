@@ -8,7 +8,7 @@ import type { Metadata } from "next";
 export const revalidate = 86400;
 
 export const metadata: Metadata = {
-  title: "cclin's Orange",
+  title: "Orange | blog for cclin",
   description: "personal website of cclin which record life and knowledge",
 };
 
