@@ -28,3 +28,12 @@ zstyle ':prompt:grml:*:items:path' pre '%F{reset}'
 ## C++ 构造函数
 
 微软的文档 <https://learn.microsoft.com/zh-cn/cpp/cpp/constructors-cpp?view=msvc-170>
+
+## 在 CLion 中使用conda环境
+
+```shell
+. /opt/mambaforge/etc/profile.d/conda.sh
+export PATH="/opt/mambaforge/bin:/home/cclin/.conda/envs/cuda/bin:$PATH"
+conda activate cuda
+echo $PATH
+```
