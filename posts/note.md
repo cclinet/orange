@@ -37,3 +37,16 @@ export PATH="/opt/mambaforge/bin:/home/cclin/.conda/envs/cuda/bin:$PATH"
 conda activate cuda
 echo $PATH
 ```
+
+## 通过 proxy 链接 github
+
+使用443端口
+
+```shell
+Host github.com
+    HostName ssh.github.com
+    Port 443
+    PreferredAuthentications publickey
+    IdentityFile ~/.ssh/id_ed25519
+    ProxyCommand nc -v -x 127.0.0.1:7890 %h %p
+```
