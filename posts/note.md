@@ -1,6 +1,6 @@
 ---
 title: "一些笔记"
-date: "2023-02-16"
+date: "2023-05-12"
 ---
 
 ## CMake 在 subdirectory 中 使用 import
@@ -31,7 +31,7 @@ zstyle ':prompt:grml:*:items:path' pre '%F{reset}'
 
 ## 在 CLion 中使用conda环境
 
-```shell
+```bash
 . /opt/mambaforge/etc/profile.d/conda.sh
 export PATH="/opt/mambaforge/bin:/home/cclin/.conda/envs/cuda/bin:$PATH"
 conda activate cuda
@@ -42,7 +42,7 @@ echo $PATH
 
 使用443端口
 
-```shell
+```bash
 Host github.com
     HostName ssh.github.com
     Port 443
