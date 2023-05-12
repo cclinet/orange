@@ -35,8 +35,8 @@ export default function Page() {
             <a href={"https://planetscale.com"} className={"text-slate-500"}>
               PlanetScale
             </a>{" "}
-          </del> Vercel
-          上， 使用了{" "}
+          </del>{" "}
+          Vercel 上， 使用了{" "}
           <a href={"https://www.cloudflare.com"} className={"text-slate-500"}>
             Cloudflare
           </a>{" "}

@@ -1,8 +1,7 @@
-/** @type {import('next').NextConfig} */
+/** @type {import("next").NextConfig} */
 module.exports = {
   experimental: {
-    appDir: true,
-    // esmExternals: "loose",
+    appDir: true
   },
   reactStrictMode: true,
   swcMinify: true,
@@ -12,12 +11,8 @@ module.exports = {
         protocol: "https",
         hostname: "i.creativecommons.org",
         port: "",
-        pathname: "/l/**",
-      },
-    ],
-  },
-  // webpack: (config, {}) => {
-  //   config.resolve.fallback = { fs: false };
-  //   return config;
-  // },
+        pathname: "/l/**"
+      }
+    ]
+  }
 };

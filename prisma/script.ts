@@ -1,26 +1,8 @@
-import { Prisma, PrismaClient } from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
 import * as process from "process";
 import { getLocalPosts } from "./utils";
 
 const prisma = new PrismaClient();
-
-// export async function upsertPosts() {
-//   console.log(`______publish______`);
-//   const localPosts = await getLocalPosts();
-//   for (const { content, ...metadata } of localPosts) {
-//     const post = await prisma.post.upsert({
-//       where: { slug: metadata.slug },
-//       create: <Prisma.PostCreateInput>metadata,
-//       update: <Prisma.PostUpdateInput>metadata,
-//     });
-//     console.log(post);
-//     await prisma.content.upsert({
-//       where: { postId: post.id },
-//       create: { content, postId: post.id },
-//       update: { content, postId: post.id },
-//     });
-//   }
-// }
 
 export async function upsertPosts() {
   console.log(`______publish______`);

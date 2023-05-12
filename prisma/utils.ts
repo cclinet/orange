@@ -21,7 +21,7 @@ export async function getLocalPosts() {
     const slug = eachFile.replace(/\.md$/, "");
     const fullPath = path.join(postsDirectory, eachFile);
     const fileContent: string = await fs.readFile(fullPath, {
-      encoding: "utf-8"
+      encoding: "utf-8",
     });
     const { content, data } = matter(fileContent);
 
@@ -30,7 +30,7 @@ export async function getLocalPosts() {
       title: data.title,
       createdAt: new Date(data.date),
       published: data.published,
-      content
+      content,
     };
     // console.log(post);
     posts.push(post);
@@ -44,7 +44,7 @@ export async function getPostBySlug(
   try {
     const post = await prisma.post.findUnique({
       where: { slug: slug },
-      select: { content: { select: { content: true } } }
+      select: { content: { select: { content: true } } },
     });
     return post?.content?.content;
   } catch (error) {
@@ -58,7 +58,7 @@ export async function getPostTitleBySlug(
   try {
     const post = await prisma.post.findUnique({
       where: { slug: slug },
-      select: { title: true }
+      select: { title: true },
     });
     return post?.title;
   } catch (error) {
@@ -79,7 +79,7 @@ export async function getPosts(
     return await prisma.post.findMany({
       where: query,
       orderBy: { createdAt: "desc" },
-      select: { title: true, createdAt: true, slug: true }
+      select: { title: true, createdAt: true, slug: true },
     });
   } catch (error) {
     console.log(error);
