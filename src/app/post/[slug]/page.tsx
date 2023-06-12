@@ -4,7 +4,7 @@ import {
   getPostBySlug,
   getPosts,
   getPostTitleBySlug,
-} from "../../../prisma/utils";
+} from "../../../../prisma/utils";
 import { notFound } from "next/navigation";
 import Footer from "./footer";
 import "@highlightjs/cdn-assets/styles/androidstudio.min.css";

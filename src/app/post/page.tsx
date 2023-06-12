@@ -1,5 +1,5 @@
 import Index from "./index";
-import { getPosts } from "../../prisma/utils";
+import { getPosts } from "../../../prisma/utils";
 
 export const revalidate = 86400;
 

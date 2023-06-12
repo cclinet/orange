@@ -50,3 +50,9 @@ Host github.com
     IdentityFile ~/.ssh/id_ed25519
     ProxyCommand nc -v -x 127.0.0.1:7890 %h %p
 ```
+
+## 查看 nvidia GPU 连接方式
+
+```bash
+nvidia-smi topo -m
+```
