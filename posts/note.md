@@ -29,7 +29,7 @@ zstyle ':prompt:grml:*:items:path' pre '%F{reset}'
 
 微软的文档 <https://learn.microsoft.com/zh-cn/cpp/cpp/constructors-cpp?view=msvc-170>
 
-## 在 CLion 中使用conda环境
+## 在 CLion 中使用 conda 环境
 
 ```bash
 . /opt/mambaforge/etc/profile.d/conda.sh
@@ -40,7 +40,7 @@ echo $PATH
 
 ## 通过 proxy 链接 github
 
-使用443端口
+使用 443 端口
 
 ```bash
 Host github.com

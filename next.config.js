@@ -6,10 +6,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "i.creativecommons.org",
         port: "",
-        pathname: "/l/**"
-      }
-    ]
-  }
+        pathname: "/l/**",
+      },
+    ],
+  },
 };
 
 module.exports = nextConfig;
